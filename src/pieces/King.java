@@ -22,7 +22,6 @@ public class King extends Piece {
 	 */
 	public King(Location location, Player player) {
 		super(location, player);
-
 		this.directions = new int[][] { { 1, 0, 1 }, { -1, 0, 1 }, { 0, 1, 1 },
 				{ 0, -1, 1 }, { 1, 1, 1 }, { 1, -1, 1 }, { -1, 1, 1 },
 				{ -1, -1, 1 } };
