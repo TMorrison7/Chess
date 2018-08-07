@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.management.JMException;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -63,6 +64,10 @@ public class ChessGameFrame extends JFrame {
 		JMenuItem customGame = new JMenuItem(GameManager.CUSTOM);
 		customGame.addActionListener(new NewGameAction());
 		gameMenu.add(customGame);
+
+		JMenuItem chess960Game = new JMenuItem(GameManager.CHESS960);
+		chess960Game.addActionListener(new NewGameAction());
+		gameMenu.add(chess960Game);
 
 		// configure the setting of the frame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
