@@ -17,7 +17,7 @@ Test if King is between Rooks
 
 /**
  * GameManger initiate and manage all information related the game
- * 
+ *
  * @author Xuefeng Zhu
  *
  */
@@ -54,7 +54,7 @@ public class GameManager {
 
 	/**
 	 * Initialize the GameManager
-	 * 
+	 *
 	 * @return
 	 */
 	public static GameManager initInstance() {
@@ -64,7 +64,7 @@ public class GameManager {
 
 	/**
 	 * Get the static instance of Gamemanager
-	 * 
+	 *
 	 * @return
 	 */
 	public static GameManager getInstance() {
@@ -109,7 +109,7 @@ public class GameManager {
 
 	/**
 	 * Helper function for initPeces
-	 * 
+	 *
 	 * @param player
 	 * @param rearRow
 	 *            the index of rear row of the player
@@ -121,16 +121,20 @@ public class GameManager {
 
 		Location location = chessBoard.getLocatoin(rearRow, 0);
 		new Rook(location, player);
+
 		location = chessBoard.getLocatoin(rearRow, 7);
 		new Rook(location, player);
 
+
 		location = chessBoard.getLocatoin(rearRow, 1);
 		new Knight(location, player);
+
 		location = chessBoard.getLocatoin(rearRow, 6);
 		new Knight(location, player);
 
 		location = chessBoard.getLocatoin(rearRow, 2);
 		new Bishop(location, player);
+
 		location = chessBoard.getLocatoin(rearRow, 5);
 		new Bishop(location, player);
 
@@ -200,6 +204,8 @@ public class GameManager {
 				king = randomNum;
 				location = chessBoard.getLocatoin(rearRow, king);
 				new King(location, player);
+				King king1 = new King(location, player);
+				player.setKingColoumnLocation(king1);
 			}
 		}
 		while (keepGoing) {
@@ -210,8 +216,14 @@ public class GameManager {
 				ro2 = num2;
 				location = chessBoard.getLocatoin(rearRow, ro1);
 				new Rook(location, player);
+				Rook rook1 = new Rook(location, player);
+				player.setRook1ColoumnLocation(rook1);
+
 				location = chessBoard.getLocatoin(rearRow, ro2);
 				new Rook(location, player);
+				Rook rook2 = new Rook(location, player);
+				player.setRook2ColoumnLocation(rook2);
+
 				keepGoing = false;
 			}
 
@@ -241,18 +253,24 @@ public class GameManager {
 			}
 		}
 
-			location = chessBoard.getLocatoin(rearRow, 0);
-			new Bishop(location, player);
-			location = chessBoard.getLocatoin(rearRow, 7);
-			new Bishop(location, player);
+		location = chessBoard.getLocatoin(rearRow, 0);
+		new Bishop(location, player);
+		Bishop bishop1 = new Bishop(location, player);
+		player.setBishop1ColoumnLocation(bishop1);
+
+		location = chessBoard.getLocatoin(rearRow, 7);
+		new Bishop(location, player);
+		Bishop bishop2 = new Bishop(location, player);
+		player.setBishop2ColoumnLocation(bishop2);
 
 
-			for (int col = 0; col < chessBoard.getWidth(); col++) {
-				location = chessBoard.getLocatoin(frontRow, col);
-				new Pawn(location, player);
-			}
 
+		for (int col = 0; col < chessBoard.getWidth(); col++) {
+			location = chessBoard.getLocatoin(frontRow, col);
+			new Pawn(location, player);
 		}
+
+	}
 
 	/**
 	 * @return preMovement
@@ -263,7 +281,7 @@ public class GameManager {
 
 	/**
 	 * Set the preMovement to movement
-	 * 
+	 *
 	 * @param movement
 	 */
 	public void setPreMovement(Movement movement) {
@@ -279,7 +297,7 @@ public class GameManager {
 
 	/**
 	 * Set the mode to the specific mode
-	 * 
+	 *
 	 * @param mode
 	 */
 	public void setMode(String mode) {
@@ -302,7 +320,7 @@ public class GameManager {
 
 	/**
 	 * Switch to another player
-	 * 
+	 *
 	 * @return next player
 	 */
 	public Player switchPlayer() {
@@ -316,7 +334,7 @@ public class GameManager {
 
 	/**
 	 * Get the opponent of the player
-	 * 
+	 *
 	 * @param player
 	 * @return opponent Player
 	 */
@@ -331,7 +349,7 @@ public class GameManager {
 	/**
 	 * Check if current player's movement is valid (not causing king check)
 	 * Update opponent statistics to see if opponent is checkmate
-	 * 
+	 *
 	 * @return true if everything goes well, false if the previous movement if
 	 *         not valid
 	 */
@@ -369,5 +387,5 @@ public class GameManager {
 		}
 
 		preMovement = null;
-		}
-		}
+	}
+}
